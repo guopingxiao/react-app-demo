@@ -22,3 +22,11 @@ Redux DevTools for debugging application's state changes.
 
 container一般是处理业务逻辑的，不进行UI的渲染，直接引入component传递数据和事件即可，不进行UI的渲染。
 UI组件component 一般不处理业务逻辑，只负责拿到数据渲染即可，一般是只有一个render函数；
+
+
+
+## 无状态组件
+
+无状态组件是只当一个组件只有一个render函数时，可以直接用一个纯函数来定义它，这就是无状态组件，无状态组件的性能优于component组件；
+一般是简单的一些UI组件，不涉及到逻辑的交互；
+
