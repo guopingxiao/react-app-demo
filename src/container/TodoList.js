@@ -3,6 +3,7 @@ import store from '../store/index'
 import * as actionCreator from '../actions/index'
 import TodoListUI from '../components/TodoListUI'
 import "antd/dist/antd.css"
+import Axios from 'axios';
 
 class TodoList extends Component { 
   constructor(props) {
@@ -23,9 +24,22 @@ class TodoList extends Component {
         handleClick={this.handleClick}
         deleteItem={this.deleteItem}
       ></TodoListUI>
-      
     )
   }
+
+  // 初始化数据
+  /* componentDidMount() { 
+    Axios.get('/api/getlist.json').then(res => { 
+      let data = res.data
+      store.dispatch({
+        type: 'init_list',
+        data
+      })
+    }).catch(err => {
+      console.log(err)
+     })
+  } */
+
   // 输入框变化
   handleInputChange(e) { 
     let value = e.target.value
@@ -44,6 +58,7 @@ class TodoList extends Component {
     const action = actionCreator.getDeleteAction(index)
     store.dispatch(action)
   }
+
   // 订阅store数据变化
   handleStoreChange() { 
     this.setState(() => store.getState())
