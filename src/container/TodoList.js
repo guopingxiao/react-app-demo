@@ -3,7 +3,6 @@ import store from '../store/index'
 import * as actionCreator from '../actions/index'
 import TodoListUI from '../components/TodoListUI'
 import "antd/dist/antd.css"
-import Axios from 'axios';
 
 class TodoList extends Component { 
   constructor(props) {
@@ -28,8 +27,10 @@ class TodoList extends Component {
   }
 
   // 初始化数据
-  /* componentDidMount() { 
-    Axios.get('/api/getlist.json').then(res => { 
+  componentDidMount() { 
+    const initAction = actionCreator.getInitAction()
+    store.dispatch(initAction)
+    /* Axios.get('/api/getlist.json').then(res => { 
       let data = res.data
       store.dispatch({
         type: 'init_list',
@@ -37,8 +38,8 @@ class TodoList extends Component {
       })
     }).catch(err => {
       console.log(err)
-     })
-  } */
+     }) */
+  }
 
   // 输入框变化
   handleInputChange(e) { 

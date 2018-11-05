@@ -10,6 +10,10 @@ const initState = {
 // 也就是索不能依赖于定时器，Ajax请求以及时间等一些参数。对于输入的参数，你只要返回一个输出就行，你不要动输入的state和action，改变了state和action就是有副作用。
 const reducer = (state = initState, action) => {
   switch (action.type) {
+    case types.INIT_TODOLIST:
+      let initState = { ...state }
+      initState.list = action.data
+      return  initState
     case types.INPUT_CHANGE:
       return {
         ...state,
